@@ -1,0 +1,1852 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindBloom | Play, Relax & Refresh</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* LIGHT THEME */
+:root {
+    --bg: #F5F0E6;
+    --surface: #FFFCF6;
+    --surface2: #E8E0D2;
+    --text: #211F1B;
+    --muted: #777064;
+    --primary: #211F1B;
+    --accent: #39352F;
+    --yellow: #D8D0C3;
+    --button-text: #FFFFFF;
+    --border: #D8D0C3;
+    --shadow: 0 8px 24px rgba(33,31,27,.07);
+}
+
+/* DARK THEME */
+body.dark {
+    --bg: #171613;
+    --surface: #24221E;
+    --surface2: #39352F;
+    --text: #F5F0E6;
+    --muted: #BDB5A8;
+    --primary: #F5F0E6;
+    --accent: #E8E0D2;
+    --yellow: #D8D0C3;
+    --button-text: #211F1B;
+    --border: #504A40;
+    --shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    transition: background .25s, color .25s;
+}
+
+h1,h2,h3,h4,.brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    padding: 15px 0;
+}
+
+.brand {
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.brand:hover {
+    color: var(--accent);
+}
+
+.theme-btn,.soft-btn {
+    border: 2px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    border-radius: 12px;
+    padding: 9px 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.theme-btn:hover {
+    background: var(--yellow);
+    color: #222;
+    border-color: var(--yellow);
+}
+
+/* HERO SECTION */
+
+.hero {
+    padding: 70px 0 45px;
+    background:
+        radial-gradient(circle at 85% 20%,rgba(165,223,0,.18),transparent 30%),
+        radial-gradient(circle at 10% 80%,rgba(255,72,72,.12),transparent 28%);
+}
+
+.eyebrow {
+    display: inline-block;
+    padding: 8px 13px;
+    border-radius: 30px;
+    background: var(--yellow);
+    color: #29261b;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem,6vw,4.5rem);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 1.08rem;
+    max-width: 570px;
+    line-height: 1.7;
+}
+
+.primary-btn {
+    background: var(--primary);
+    color: var(--button-text);
+    border: 0;
+    border-radius: 12px;
+    padding: 13px 20px;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+.primary-btn:hover {
+    background: var(--yellow);
+    color: #222;
+    transform: translateY(-2px);
+}
+
+.hero-art {
+    min-height: 260px;
+    display: grid;
+    place-items: center;
+}
+
+.orb {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%,#fff9d5 0 5%,#ffd52a 25%,#a5df00 55%,#ff4848 100%);
+    box-shadow: 0 20px 60px rgba(165,223,0,.25);
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+}
+
+.orb:before,.orb:after {
+    content: "";
+    position: absolute;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    inset: -23px;
+    transform: rotateX(65deg);
+}
+
+.orb:after {
+    inset: -42px;
+    border-color: var(--primary);
+    transform: rotateX(65deg) rotate(55deg);
+}
+
+@keyframes float {
+    50% { transform: translateY(-13px); }
+}
+
+/* GAMES SECTION */
+
+.section {
+    padding: 40px 0 65px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -.8px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    margin: 5px 0 0;
+}
+
+.filter-row {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.filter-btn {
+    border: 2px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: .88rem;
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--button-text);
+}
+
+.filter-btn:hover {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: #222;
+}
+
+/* GAME CARDS */
+
+.game-card {
+    height: 100%;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    transition: .25s;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+}
+
+.game-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-size: 1.7rem;
+    background: var(--yellow);
+    margin-bottom: 17px;
+}
+
+.game-item:nth-child(3n+2) .game-icon {
+    background: #d9f58a;
+}
+
+.game-item:nth-child(3n) .game-icon {
+    background: #ffd0c9;
+}
+
+.game-card h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.game-card p {
+    color: var(--muted);
+    font-size: .92rem;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.tag {
+    font-size: .73rem;
+    font-weight: 800;
+    color: #29261b;
+    background: var(--yellow);
+    padding: 6px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.play-btn {
+    width: 100%;
+    border: 0;
+    border-radius: 11px;
+    background: var(--primary);
+    color: var(--button-text);
+    font-weight: 800;
+    padding: 11px;
+    transition: .2s;
+}
+
+.play-btn:hover {
+    background: var(--accent);
+    color: #FFFFFF;
+}
+
+/* ABOUT SECTION */
+
+.info-strip {
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    border-radius: 18px;
+    padding: 22px;
+    color: var(--muted);
+}
+
+.info-strip h3 {
+    color: var(--text);
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 2px solid var(--border);
+    padding: 25px 0;
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* GAME POPUP */
+
+.modal-content {
+    background: var(--surface);
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border);
+}
+
+body.dark .btn-close {
+    filter: invert(1);
+}
+
+.game-area {
+    min-height: 260px;
+    background: var(--surface2);
+    border-radius: 16px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.game-area button {
+    border: 0;
+    border-radius: 11px;
+    padding: 10px 16px;
+    background: var(--primary);
+    color: var(--button-text);
+    font-weight: 800;
+    margin: 5px;
+}
+
+.game-area button:hover {
+    background: var(--accent);
+    color: #FFFFFF;
+}
+
+.game-area input {
+    max-width: 230px;
+    background: var(--surface);
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.game-area input::placeholder {
+    color: var(--muted);
+    opacity: 1;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(48px,68px));
+    gap: 8px;
+    justify-content: center;
+    margin: 14px auto;
+}
+
+.memory-card {
+    height: 62px;
+    border-radius: 12px;
+    background: var(--primary);
+    color: var(--button-text);
+    font-size: 1.5rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border: 0;
+}
+
+.memory-card.open {
+    background: var(--yellow);
+    color: #222;
+}
+
+.breath-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,var(--primary),var(--accent));
+    display: grid;
+    place-items: center;
+    color: var(--button-text);
+    font-weight: 800;
+    font-size: 1.15rem;
+    margin: 15px auto;
+    box-shadow: 0 0 0 15px rgba(165,223,0,.13);
+    transition: transform 4s ease-in-out;
+}
+
+.breath-circle.expand {
+    transform: scale(1.22);
+}
+
+.color-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.color-options button {
+    min-width: 90px;
+}
+
+.pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(3,70px);
+    gap: 8px;
+    margin: 15px auto;
+}
+
+.pattern-cell {
+    height: 65px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.pattern-cell.lit {
+    background: var(--accent);
+}
+
+#focusField {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    background: var(--surface);
+    border: 2px dashed var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+#focusTarget {
+    position: absolute;
+    border: 0;
+    background: var(--accent);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+@media(max-width:767px) {
+    .hero {
+        padding: 45px 0 25px;
+    }
+
+    .hero-art {
+        min-height: 190px;
+    }
+
+    .orb {
+        width: 155px;
+        height: 155px;
+    }
+
+    .section-heading {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .game-card {
+        padding: 18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar sticky-top">
+<div class="container d-flex align-items-center justify-content-between">
+
+<a class="brand" href="#">MindBloom</a>
+
+<div class="d-flex align-items-center gap-3">
+
+<div class="d-none d-md-flex gap-3">
+<a class="nav-link" href="#games">Games</a>
+<a class="nav-link" href="#about">About</a>
+</div>
+
+<button class="theme-btn" id="themeToggle">
+☾ Dark mode
+</button>
+
+</div>
+</div>
+</nav>
+
+<!-- HERO SECTION -->
+
+<header class="hero">
+<div class="container">
+<div class="row align-items-center">
+
+<div class="col-lg-7">
+
+<span class="eyebrow">A little break for your mind</span>
+
+<h1>
+Pause. Play.<br>
+<span>Feel refreshed.</span>
+</h1>
+
+<p>
+Take a break from the busy day. Explore calming activities
+and playful brain challenges, all in one happy place.
+</p>
+
+<a href="#games" class="primary-btn">
+Explore all games →
+</a>
+
+</div>
+
+<div class="col-lg-5 hero-art">
+<div class="orb"></div>
+</div>
+
+</div>
+</div>
+</header>
+
+<!-- GAMES SECTION -->
+
+<main>
+
+<section class="section" id="games">
+<div class="container">
+
+<div class="section-heading">
+
+<div>
+<span class="eyebrow">Pick your moment</span>
+<h2 class="mt-3 mb-1">Find your kind of calm</h2>
+<p>Choose a game and enjoy a few mindful minutes.</p>
+</div>
+
+<span class="tag">10 mini-games · Free to play</span>
+
+</div>
+
+<!-- FILTER BUTTONS -->
+
+<div class="filter-row">
+
+<button class="filter-btn active" data-filter="all">All games</button>
+<button class="filter-btn" data-filter="Relaxation">Relaxation</button>
+<button class="filter-btn" data-filter="Memory">Memory</button>
+<button class="filter-btn" data-filter="Focus">Focus</button>
+<button class="filter-btn" data-filter="Logic">Logic</button>
+
+</div>
+
+<div class="row g-4" id="gameCards">
+
+<!-- GAME 1 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Relaxation">
+<article class="game-card">
+
+<div class="game-icon">🌬️</div>
+<span class="tag">RELAXATION</span>
+<h3>Calm Breathing</h3>
+<p>Follow a gentle breathing rhythm. Breathe in, pause and breathe out at your own pace.</p>
+<button class="play-btn" onclick="openGame('breathing')">Play now →</button>
+
+</article>
+</div>
+
+<!-- GAME 2 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Memory">
+<article class="game-card">
+
+<div class="game-icon">🧠</div>
+<span class="tag">MEMORY</span>
+<h3>Memory Match</h3>
+<p>Flip the cards and find matching pairs. Try to remember where each symbol is hiding.</p>
+<button class="play-btn" onclick="openGame('memory')">Play now →</button>
+
+</article>
+</div>
+
+<!-- GAME 3 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Focus">
+<article class="game-card">
+
+<div class="game-icon">⚡</div>
+<span class="tag">FOCUS</span>
+<h3>Reaction Tap</h3>
+<p>Wait for the signal, then tap as quickly as you can. See your reaction time.</p>
+<button class="play-btn" onclick="openGame('reaction')">Play now →</button>
+
+</article>
+</div>
+
+<!-- GAME 4 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Focus">
+<article class="game-card">
+
+<div class="game-icon">🎨</div>
+<span class="tag">FOCUS</span>
+<h3>Colour Challenge</h3>
+<p>Read the instruction carefully and choose the colour of the displayed word.</p>
+<button class="play-btn" onclick="openGame('colour')">Play now →</button>
+
+</article>
+</div>
+
+<!-- GAME 5 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Memory">
+<article class="game-card">
+
+<div class="game-icon">🔢</div>
+<span class="tag">MEMORY</span>
+<h3>Number Recall</h3>
+<p>Memorise a number sequence before it disappears, then type it from memory.</p>
+<button class="play-btn" onclick="openGame('number')">Play now →</button>
+
+</article>
+</div>
+
+<!-- GAME 6 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Logic">
+<article class="game-card">
+
+<div class="game-icon">🔤</div>
+<span class="tag">LOGIC</span>
+<h3>Word Scramble</h3>
+<p>Unscramble mixed-up letters to discover the hidden word.</p>
+<button class="play-btn" onclick="openGame('word')">Play now →</button>
+
+</article>
+</div>
+
+<!-- GAME 7 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Memory">
+<article class="game-card">
+
+<div class="game-icon">🟣</div>
+<span class="tag">MEMORY</span>
+<h3>Pattern Recall</h3>
+<p>Watch the tiles light up and repeat the same pattern in the correct order.</p>
+<button class="play-btn" onclick="openGame('pattern')">Play now →</button>
+
+</article>
+</div>
+
+<!-- GAME 8 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Focus">
+<article class="game-card">
+
+<div class="game-icon">🎯</div>
+<span class="tag">FOCUS</span>
+<h3>Focus Finder</h3>
+<p>Find and tap the moving target. How many can you catch in twenty seconds?</p>
+<button class="play-btn" onclick="openGame('focus')">Play now →</button>
+
+</article>
+</div>
+
+<!-- GAME 9 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Logic">
+<article class="game-card">
+
+<div class="game-icon">➗</div>
+<span class="tag">LOGIC</span>
+<h3>Quick Maths</h3>
+<p>Solve simple number puzzles. Try to answer as many as you can in one minute.</p>
+<button class="play-btn" onclick="openGame('math')">Play now →</button>
+
+</article>
+</div>
+
+<!-- GAME 10 -->
+
+<div class="col-sm-6 col-lg-4 game-item" data-category="Relaxation">
+<article class="game-card">
+
+<div class="game-icon">🫧</div>
+<span class="tag">RELAXATION</span>
+<h3>Bubble Pop</h3>
+<p>Pop floating bubbles at your own pace. No timer and no pressure—just play.</p>
+<button class="play-btn" onclick="openGame('bubble')">Play now →</button>
+
+</article>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ABOUT SECTION -->
+
+<section class="pb-5" id="about">
+<div class="container">
+
+<div class="info-strip">
+
+<div class="row align-items-center g-3">
+
+<div class="col-md-8">
+
+<h3 class="h5 fw-bold mb-2">A small reminder 💚</h3>
+
+<p class="mb-0">
+MindBloom is made for light entertainment and short mental breaks.
+These games are not medical treatment and cannot diagnose or treat anxiety.
+If you feel overwhelmed, pause the game and reach out to someone you trust
+or a qualified professional.
+</p>
+
+</div>
+
+<div class="col-md-4 text-md-end">
+<span class="tag">Play at your own pace</span>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+<div class="container d-flex flex-wrap justify-content-between gap-2">
+
+<span>MindBloom — Play, Relax & Refresh</span>
+<span>Take a breath. You deserve a break.</span>
+
+</div>
+</footer>
+
+<!-- GAME POPUP -->
+
+<div class="modal fade" id="gameModal" tabindex="-1" aria-hidden="true">
+
+<div class="modal-dialog modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<div>
+<span class="tag mb-1" id="modalTag">MINI GAME</span>
+<h5 class="modal-title fw-bold" id="modalTitle">Game</h5>
+</div>
+
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+<div class="game-area" id="gameArea"></div>
+</div>
+
+<div class="modal-footer">
+
+<small class="text-secondary me-auto" id="gameHint">
+Have fun!
+</small>
+
+<button class="soft-btn" data-bs-dismiss="modal">
+Close game
+</button>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- JAVASCRIPT AND JQUERY -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+// DARK MODE AND LIGHT MODE
+
+$(function(){
+
+    const savedTheme = localStorage.getItem('mindbloom-theme');
+
+    if(savedTheme === 'dark'){
+        $('body').addClass('dark');
+    }
+
+    updateThemeButton();
+
+    $('#themeToggle').on('click',function(){
+
+        $('body').toggleClass('dark');
+
+        localStorage.setItem(
+            'mindbloom-theme',
+            $('body').hasClass('dark') ? 'dark' : 'light'
+        );
+
+        updateThemeButton();
+
+    });
+
+    function updateThemeButton(){
+
+        $('#themeToggle').text(
+            $('body').hasClass('dark') ? '☀ Light mode' : '☾ Dark mode'
+        );
+
+    }
+
+    // GAME CATEGORY FILTER
+
+    $('.filter-btn').on('click',function(){
+
+        $('.filter-btn').removeClass('active');
+
+        $(this).addClass('active');
+
+        let f = $(this).data('filter');
+
+        $('.game-item').each(function(){
+
+            $(this).toggle(
+                f === 'all' || $(this).data('category') === f
+            );
+
+        });
+
+    });
+
+});
+
+// GAME MODAL
+
+const modal = new bootstrap.Modal(
+    document.getElementById('gameModal')
+);
+
+let cleanup = null;
+
+function openGame(type){
+
+    if(cleanup){
+        cleanup();
+        cleanup = null;
+    }
+
+    const area = document.getElementById('gameArea');
+
+    area.innerHTML = '';
+
+    const titles = {
+        breathing:'Calm Breathing',
+        memory:'Memory Match',
+        reaction:'Reaction Tap',
+        colour:'Colour Challenge',
+        number:'Number Recall',
+        word:'Word Scramble',
+        pattern:'Pattern Recall',
+        focus:'Focus Finder',
+        math:'Quick Maths',
+        bubble:'Bubble Pop'
+    };
+
+    document.getElementById('modalTitle').textContent = titles[type];
+
+    document.getElementById('modalTag').textContent = ({
+        breathing:'RELAXATION',
+        memory:'MEMORY',
+        reaction:'FOCUS',
+        colour:'FOCUS',
+        number:'MEMORY',
+        word:'LOGIC',
+        pattern:'MEMORY',
+        focus:'FOCUS',
+        math:'LOGIC',
+        bubble:'RELAXATION'
+    })[type];
+
+    modal.show();
+
+    document.getElementById('gameHint').textContent = 'Play at your own pace.';
+
+    ({
+        breathing:breathingGame,
+        memory:memoryGame,
+        reaction:reactionGame,
+        colour:colourGame,
+        number:numberGame,
+        word:wordGame,
+        pattern:patternGame,
+        focus:focusGame,
+        math:mathGame,
+        bubble:bubbleGame
+    })[type](area);
+
+}
+
+// 1. CALM BREATHING
+
+function breathingGame(a){
+
+    a.innerHTML = `
+    <p>Follow the circle. Breathe in as it grows, and breathe out as it shrinks.</p>
+    <div class="breath-circle" id="breathCircle">Ready?</div>
+    <h4 id="breathText">Take a comfortable position</h4>
+    <p id="breathCount">A gentle 4-second rhythm</p>
+    <button id="breathStart">Start breathing</button>
+    `;
+
+    let timer = null;
+    let phase = 0;
+    let secs = 0;
+
+    const circle = a.querySelector('#breathCircle');
+    const txt = a.querySelector('#breathText');
+    const count = a.querySelector('#breathCount');
+
+    a.querySelector('#breathStart').onclick = () => {
+
+        if(timer){
+
+            clearInterval(timer);
+            timer = null;
+
+            circle.classList.remove('expand');
+            txt.textContent = 'Paused';
+
+            a.querySelector('#breathStart').textContent = 'Start again';
+
+            return;
+        }
+
+        a.querySelector('#breathStart').textContent = 'Pause';
+
+        phase = 0;
+        secs = 4;
+
+        function update(){
+
+            let inhale = phase % 2 === 0;
+
+            txt.textContent = inhale ? 'Breathe in' : 'Breathe out';
+
+            circle.textContent = inhale ? 'IN' : 'OUT';
+
+            circle.classList.toggle('expand',inhale);
+
+            count.textContent = secs + ' seconds';
+
+            secs--;
+
+            if(secs < 0){
+                phase++;
+                secs = 4;
+            }
+
+        }
+
+        update();
+
+        timer = setInterval(update,1000);
+
+    };
+
+    cleanup = () => {
+        if(timer) clearInterval(timer);
+    };
+
+}
+
+// 2. MEMORY MATCH
+
+function memoryGame(a){
+
+    const icons = ['🌙','🍀','⭐','🎈','🌸','🍉','🦋','🎧'];
+
+    let deck = [...icons,...icons].sort(() => Math.random() - .5);
+
+    let first = null;
+    let lock = false;
+    let matches = 0;
+    let moves = 0;
+    let flipTimer = null;
+
+    a.innerHTML = `
+    <p>Find all 8 matching pairs.</p>
+
+    <div class="d-flex gap-4 justify-content-center">
+    <b>Moves: <span id="moves">0</span></b>
+    <b>Pairs: <span id="pairs">0</span>/8</b>
+    </div>
+
+    <div class="memory-grid" id="memoryGrid"></div>
+
+    <button id="memRestart">Restart</button>
+    `;
+
+    const grid = a.querySelector('#memoryGrid');
+
+    deck.forEach((v,i) => {
+
+        let b = document.createElement('button');
+
+        b.className = 'memory-card';
+        b.textContent = '?';
+        b.dataset.value = v;
+
+        b.onclick = () => {
+
+            if(lock || b.classList.contains('open') || b.dataset.matched) return;
+
+            b.classList.add('open');
+            b.textContent = v;
+
+            if(!first){
+                first = b;
+                return;
+            }
+
+            moves++;
+
+            a.querySelector('#moves').textContent = moves;
+
+            if(first.dataset.value === v){
+
+                first.dataset.matched = '1';
+                b.dataset.matched = '1';
+
+                matches++;
+
+                a.querySelector('#pairs').textContent = matches;
+
+                first = null;
+
+                if(matches === 8){
+                    a.querySelector('p').textContent = '🎉 You found every pair! Great job!';
+                }
+
+            }else{
+
+                lock = true;
+
+                let old = first;
+
+                flipTimer = setTimeout(() => {
+
+                    old.classList.remove('open');
+                    old.textContent = '?';
+
+                    b.classList.remove('open');
+                    b.textContent = '?';
+
+                    first = null;
+                    lock = false;
+
+                },700);
+
+            }
+
+        };
+
+        grid.appendChild(b);
+
+    });
+
+    a.querySelector('#memRestart').onclick = () => memoryGame(a);
+
+    cleanup = () => clearTimeout(flipTimer);
+
+}
+
+// 3. REACTION TAP
+
+function reactionGame(a){
+
+    a.innerHTML = `
+    <p>Press start. Wait until the panel turns green, then tap it.</p>
+
+    <div id="reactBox" style="background:#9b8ab9;color:white;padding:35px 15px;border-radius:15px;width:100%;font-weight:800">
+    Press start to begin
+    </div>
+
+    <h3 class="mt-3" id="reactResult">—</h3>
+
+    <button id="reactStart">Start test</button>
+    `;
+
+    let timeout = null;
+    let start = 0;
+    let ready = false;
+
+    const box = a.querySelector('#reactBox');
+    const res = a.querySelector('#reactResult');
+    const btn = a.querySelector('#reactStart');
+
+    btn.onclick = () => {
+
+        clearTimeout(timeout);
+
+        ready = false;
+
+        box.style.background = '#9b8ab9';
+        box.textContent = 'Wait for green...';
+
+        res.textContent = '';
+        btn.disabled = true;
+
+        timeout = setTimeout(() => {
+
+            ready = true;
+            start = performance.now();
+
+            box.style.background = '#35a779';
+            box.textContent = 'TAP NOW!';
+
+        },1200 + Math.random() * 2600);
+
+    };
+
+    box.onclick = () => {
+
+        if(!btn.disabled) return;
+
+        if(!ready){
+
+            clearTimeout(timeout);
+
+            box.textContent = 'Too soon! Try again.';
+
+            res.textContent = 'Wait for the green signal.';
+
+            btn.disabled = false;
+
+            return;
+        }
+
+        let ms = Math.round(performance.now() - start);
+
+        res.textContent = 'Your time: ' + ms + ' ms';
+
+        box.textContent = 'Nice reaction!';
+
+        btn.disabled = false;
+        ready = false;
+
+    };
+
+    cleanup = () => clearTimeout(timeout);
+
+}
+
+// 4. COLOUR CHALLENGE
+
+function colourGame(a){
+
+    const colours = ['RED','BLUE','GREEN','PURPLE'];
+
+    const hex = {
+        RED:'#e44f68',
+        BLUE:'#4386dc',
+        GREEN:'#28a879',
+        PURPLE:'#9566d8'
+    };
+
+    let score = 0;
+    let round = 0;
+    let correct = '';
+
+    a.innerHTML = `
+    <p>Choose the INK COLOUR of the word, not what the word says.</p>
+
+    <h2 id="colourWord" style="font-size:2.5rem;font-weight:800">
+    READY?
+    </h2>
+
+    <div class="color-options" id="colourOptions"></div>
+
+    <p class="mt-3" id="colourScore">Score: 0 / 10</p>
+    `;
+
+    function next(){
+
+        if(round >= 10){
+
+            a.querySelector('#colourWord').textContent = 'Finished!';
+
+            a.querySelector('#colourOptions').innerHTML =
+                '<b>Your score: ' + score + '/10</b><button id="colourAgain">Play again</button>';
+
+            a.querySelector('#colourAgain').onclick = () => colourGame(a);
+
+            return;
+        }
+
+        round++;
+
+        let word = colours[Math.floor(Math.random() * 4)];
+
+        correct = colours[Math.floor(Math.random() * 4)];
+
+        let el = a.querySelector('#colourWord');
+
+        el.textContent = word;
+        el.style.color = hex[correct];
+
+        let opts = a.querySelector('#colourOptions');
+
+        opts.innerHTML = '';
+
+        colours.forEach(c => {
+
+            let b = document.createElement('button');
+
+            b.textContent = c;
+
+            b.onclick = () => {
+
+                if(c === correct) score++;
+
+                a.querySelector('#colourScore').textContent = 'Score: ' + score + ' / 10';
+
+                next();
+
+            };
+
+            opts.appendChild(b);
+
+        });
+
+    }
+
+    next();
+
+}
+
+// 5. NUMBER RECALL
+
+function numberGame(a){
+
+    let seq = '';
+    let level = 3;
+    let timer = null;
+
+    a.innerHTML = `
+    <p>Memorise the number. It will disappear after a moment.</p>
+
+    <h2 id="numDisplay" style="font-size:2.6rem;letter-spacing:7px">Ready?</h2>
+
+    <input id="numInput" placeholder="Type the number" inputmode="numeric">
+
+    <div>
+    <button id="numStart">Show number</button>
+    <button id="numCheck">Check</button>
+    </div>
+
+    <p id="numMsg" class="mt-2">Level: 3 digits</p>
+    `;
+
+    const display = a.querySelector('#numDisplay');
+    const input = a.querySelector('#numInput');
+    const msg = a.querySelector('#numMsg');
+
+    a.querySelector('#numStart').onclick = () => {
+
+        clearTimeout(timer);
+
+        seq = Array.from(
+            {length:level},
+            () => Math.floor(Math.random() * 10)
+        ).join('');
+
+        display.textContent = seq;
+
+        input.value = '';
+        input.disabled = true;
+
+        msg.textContent = 'Memorise it!';
+
+        timer = setTimeout(() => {
+
+            display.textContent = '???';
+
+            input.disabled = false;
+            input.focus();
+
+            msg.textContent = 'Now type what you remember.';
+
+        },1800 + level * 250);
+
+    };
+
+    a.querySelector('#numCheck').onclick = () => {
+
+        if(!seq) return;
+
+        if(input.value === seq){
+
+            msg.textContent = 'Correct! Next level unlocked.';
+
+            level = Math.min(8,level + 1);
+
+        }else{
+
+            msg.textContent = 'Not quite. The number was ' + seq + '. Try again!';
+
+            level = 3;
+
+        }
+
+        display.textContent = '';
+        seq = '';
+
+    };
+
+    cleanup = () => clearTimeout(timer);
+
+}
+
+// 6. WORD SCRAMBLE
+
+function wordGame(a){
+
+    const words = [
+        'GARDEN','PLANET','PURPLE','BREEZE','POCKET',
+        'SUNSET','FLOWER','JOURNEY','PUZZLE','RAINBOW'
+    ];
+
+    let word = '';
+    let scr = '';
+
+    a.innerHTML = `
+    <p>Put the letters in the correct order to make a word.</p>
+
+    <h2 id="scrambled" style="letter-spacing:6px">—</h2>
+
+    <input id="wordInput" placeholder="Your answer">
+
+    <div>
+    <button id="wordCheck">Check answer</button>
+    <button id="wordNew">New word</button>
+    </div>
+
+    <p id="wordMsg" class="mt-2">Hint: everyday words</p>
+    `;
+
+    function next(){
+
+        word = words[Math.floor(Math.random() * words.length)];
+
+        do{
+            scr = word.split('').sort(() => Math.random() - .5).join('');
+        }while(scr === word);
+
+        a.querySelector('#scrambled').textContent = scr;
+
+        a.querySelector('#wordInput').value = '';
+
+        a.querySelector('#wordMsg').textContent = 'Unscramble the letters.';
+
+    }
+
+    a.querySelector('#wordNew').onclick = next;
+
+    a.querySelector('#wordCheck').onclick = () => {
+
+        let val = a.querySelector('#wordInput').value.trim().toUpperCase();
+
+        a.querySelector('#wordMsg').textContent =
+            val === word ? 'Correct! Well done.' : 'Try again! Hint: ' + word.length + ' letters.';
+
+    };
+
+    next();
+
+}
+
+// 7. PATTERN RECALL
+
+function patternGame(a){
+
+    let pattern = [];
+    let user = [];
+    let showing = false;
+    let level = 1;
+    let sequenceTimer = null;
+
+    a.innerHTML = `
+    <p>Watch the tiles light up, then repeat the pattern.</p>
+
+    <div class="pattern-grid" id="patternGrid"></div>
+
+    <p id="patternMsg">Press start when ready.</p>
+
+    <button id="patternStart">Start pattern</button>
+    `;
+
+    const grid = a.querySelector('#patternGrid');
+    const msg = a.querySelector('#patternMsg');
+
+    for(let i = 0; i < 9; i++){
+
+        let d = document.createElement('button');
+
+        d.className = 'pattern-cell';
+
+        d.onclick = () => tap(i);
+
+        grid.appendChild(d);
+
+    }
+
+    function light(i,on){
+        grid.children[i].classList.toggle('lit',on);
+    }
+
+    function start(){
+
+        clearTimeout(sequenceTimer);
+
+        pattern = Array.from(
+            {length:level + 2},
+            () => Math.floor(Math.random() * 9)
+        );
+
+        user = [];
+
+        showing = true;
+
+        msg.textContent = 'Watch carefully...';
+
+        let idx = 0;
+
+        function step(){
+
+            if(idx > 0){
+                light(pattern[idx - 1],false);
+            }
+
+            if(idx < pattern.length){
+
+                light(pattern[idx],true);
+
+                idx++;
+
+                sequenceTimer = setTimeout(step,650);
+
+            }else{
+
+                showing = false;
+
+                msg.textContent = 'Your turn! Repeat the pattern.';
+
+            }
+
+        }
+
+        step();
+
+    }
+
+    function tap(i){
+
+        if(showing || !pattern.length) return;
+
+        light(i,true);
+
+        setTimeout(() => light(i,false),180);
+
+        user.push(i);
+
+        if(user[user.length - 1] !== pattern[user.length - 1]){
+
+            msg.textContent = 'Good try! Press start to try another pattern.';
+
+            level = 1;
+            pattern = [];
+
+            return;
+
+        }
+
+        if(user.length === pattern.length){
+
+            msg.textContent = 'Perfect! Level ' + level + ' complete.';
+
+            level = Math.min(7,level + 1);
+
+            pattern = [];
+
+        }
+
+    }
+
+    a.querySelector('#patternStart').onclick = start;
+
+    cleanup = () => clearTimeout(sequenceTimer);
+
+}
+
+// 8. FOCUS FINDER
+
+function focusGame(a){
+
+    a.innerHTML = `
+    <p>Tap the purple target as many times as you can in 20 seconds.</p>
+
+    <div class="d-flex justify-content-around w-100 mb-2">
+
+    <b>Time: <span id="focusTime">20</span>s</b>
+
+    <b>Hits: <span id="focusHits">0</span></b>
+
+    </div>
+
+    <div id="focusField">
+    <button id="focusTarget" aria-label="Target"></button>
+    </div>
+
+    <button id="focusStart">Start game</button>
+    `;
+
+    let hits = 0;
+    let left = 20;
+    let timer = null;
+
+    const field = a.querySelector('#focusField');
+    const target = a.querySelector('#focusTarget');
+
+    target.style.display = 'none';
+
+    function move(){
+
+        let x = Math.random() * (field.clientWidth - 42);
+        let y = Math.random() * (field.clientHeight - 42);
+
+        target.style.left = x + 'px';
+        target.style.top = y + 'px';
+
+    }
+
+    target.onclick = () => {
+
+        hits++;
+
+        a.querySelector('#focusHits').textContent = hits;
+
+        move();
+
+    };
+
+    a.querySelector('#focusStart').onclick = () => {
+
+        clearInterval(timer);
+
+        hits = 0;
+        left = 20;
+
+        a.querySelector('#focusHits').textContent = 0;
+        a.querySelector('#focusTime').textContent = 20;
+
+        a.querySelector('p').textContent = 'Tap the purple target as many times as you can in 20 seconds.';
+
+        target.style.display = 'block';
+
+        move();
+
+        timer = setInterval(() => {
+
+            left--;
+
+            a.querySelector('#focusTime').textContent = left;
+
+            if(left <= 0){
+
+                clearInterval(timer);
+
+                target.style.display = 'none';
+
+                a.querySelector('#focusStart').textContent = 'Play again';
+
+                a.querySelector('p').textContent =
+                    'Time is up! You found ' + hits + ' targets.';
+
+            }
+
+        },1000);
+
+    };
+
+    cleanup = () => clearInterval(timer);
+
+}
+
+// 9. QUICK MATHS
+
+function mathGame(a){
+
+    let score = 0;
+    let left = 60;
+    let answer = 0;
+    let timer = null;
+    let running = false;
+
+    a.innerHTML = `
+    <p>Solve as many as you can in 60 seconds.</p>
+
+    <div class="d-flex justify-content-around w-100">
+
+    <b>Time: <span id="mathTime">60</span>s</b>
+
+    <b>Score: <span id="mathScore">0</span></b>
+
+    </div>
+
+    <h2 id="mathQuestion" class="my-3">Ready?</h2>
+
+    <input id="mathInput" placeholder="Your answer" inputmode="numeric">
+
+    <div>
+    <button id="mathStart">Start</button>
+    <button id="mathSubmit">Submit</button>
+    </div>
+
+    <p id="mathMsg" class="mt-2">You can do it!</p>
+    `;
+
+    const q = a.querySelector('#mathQuestion');
+    const inp = a.querySelector('#mathInput');
+    const msg = a.querySelector('#mathMsg');
+
+    function next(){
+
+        let x = 1 + Math.floor(Math.random() * 12);
+        let y = 1 + Math.floor(Math.random() * 12);
+
+        let op = Math.random() < .5 ? '+' : '−';
+
+        answer = op === '+' ? x + y : x - y;
+
+        q.textContent = x + ' ' + op + ' ' + y + ' = ?';
+
+        inp.value = '';
+
+    }
+
+    a.querySelector('#mathStart').onclick = () => {
+
+        clearInterval(timer);
+
+        score = 0;
+        left = 60;
+        running = true;
+
+        a.querySelector('#mathScore').textContent = 0;
+        a.querySelector('#mathTime').textContent = 60;
+
+        next();
+
+        inp.focus();
+
+        timer = setInterval(() => {
+
+            left--;
+
+            a.querySelector('#mathTime').textContent = left;
+
+            if(left <= 0){
+
+                clearInterval(timer);
+
+                running = false;
+
+                q.textContent = 'Time is up!';
+
+                msg.textContent = 'Final score: ' + score;
+
+            }
+
+        },1000);
+
+    };
+
+    function submit(){
+
+        if(!running || inp.value.trim() === '') return;
+
+        if(Number(inp.value) === answer){
+
+            score++;
+
+            a.querySelector('#mathScore').textContent = score;
+
+            msg.textContent = 'Correct!';
+
+        }else{
+
+            msg.textContent = 'Not quite. Keep going!';
+
+        }
+
+        next();
+
+    }
+
+    a.querySelector('#mathSubmit').onclick = submit;
+
+    inp.onkeydown = e => {
+        if(e.key === 'Enter') submit();
+    };
+
+    cleanup = () => clearInterval(timer);
+
+}
+
+// 10. BUBBLE POP
+
+function bubbleGame(a){
+
+    a.innerHTML = `
+    <p>Tap the bubbles and watch them pop. There is no score and no timer.</p>
+
+    <div id="bubbleField" style="height:230px;width:100%;position:relative;overflow:hidden;background:var(--surface);border-radius:15px"></div>
+
+    <button id="bubbleAdd">Add bubbles</button>
+
+    <button id="bubbleClear">Clear</button>
+    `;
+
+    const field = a.querySelector('#bubbleField');
+
+    const emojis = ['🫧','💜','💗','✨','🌸'];
+
+    function add(){
+
+        for(let i = 0; i < 5; i++){
+
+            let b = document.createElement('button');
+
+            b.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+            b.style.cssText =
+                'position:absolute;font-size:' +
+                (22 + Math.random() * 20) +
+                'px;background:transparent;padding:4px;';
+
+            b.style.left = Math.random() * 85 + '%';
+            b.style.top = Math.random() * 78 + '%';
+
+            b.onclick = () => {
+
+                b.style.transform = 'scale(1.7)';
+                b.style.opacity = '0';
+
+                setTimeout(() => b.remove(),180);
+
+            };
+
+            field.appendChild(b);
+
+        }
+
+    }
+
+    add();
+
+    a.querySelector('#bubbleAdd').onclick = add;
+
+    a.querySelector('#bubbleClear').onclick = () => {
+        field.innerHTML = '';
+    };
+
+}
+
+</script>
+
+</body>
+</html>
